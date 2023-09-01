@@ -101,6 +101,52 @@ The open-source Arduino Software (IDE) makes it easy to write code and upload it
 
 The Proteus Design Suite is a proprietary software tool suite used primarily for electronic design automation. The software is used mainly by electronic design engineers and technicians to create schematics and electronic prints for manufacturing printed circuit boards. We used this for simulation of the circuit.
 
+## Circuit Diagram
+
+| ![Design Project_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/3b947314-757f-47d0-8674-013202e5d646) |
+|:--:|
+| *Schematic of the Main Circuit* |
+
+| ![Design-Project-2_bb](https://github.com/fayizferosh/btech-mini-project/assets/63997454/79800dc0-f300-4656-b053-392b63c390a5) |
+|:--:|
+| *Breadboard Wiring of the Main Circuit* |
+
+| ![Design Project 3_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/6950802d-b48d-44ba-a0e5-808f8147f849) |
+|:--:|
+| *Schematic of the Programming Circuit* |
+
+| ![Design Project 1_bb](https://github.com/fayizferosh/btech-mini-project/assets/63997454/2bf7a51c-abd4-4570-b657-a31bb1335142) |
+|:--:|
+| *Breadboard Wiring of the Programming Circuit* |
+
+### Design
+
+We chose ATmega328P since we required a microcontroller but we didn't know Assembly Language Programming required to use a microcontroller. We burned Arduino Uno bootloader to the microcontroller so that we could code it using Arduino code which we knew. To use ATmega328P microcontroller as Arduino on breadboard we required just a 16 MHz crystal along with two 22pF ceramic capacitor. But to program we required an extra 100nF ceramic capacitor. All the connections are avalable in schematics above. The reference used for this is in "Reference" section.
+
+We used MT8870 DTMF Decoder Module since it provides information on the key pressed on DTMF keypad a 4-bit code for a key so in total 16 keys. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+
+The 16x2 LCD is very easy to interface with Arduino board, which is the exact reason why we chose it as the display for our project. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+
+The 12V Soleniod was the best component available to us to demonstrate the locking function that we required. Since this is a prototype, as we develop further we will be making significant changes. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+
+For interfacing LEDs we know that both our supply and microcontroller output voltage are 5V and that the forward current of the LED to be 10mA from LED datasheet. So using the equation:
+
+```math
+Resistance = \frac{(BatteryVoltage - LEDMinForwardVoltage)}{LEDForwardCurrent}
+```
+
+Substituting,
+
+```math
+Resistance = \frac{(5V - 2V)}{10mA} = \frac{3V}{10mA} = 300\Omega
+```
+
+So, approximately we took 330 $\Omega$ resistor.
+
+Since using relay without proper circuits required might cause back emf voltage spike or some other undesired event, which is the reason why we chose the Relay Module. The circuit consists of a transistor an LED and few resistors. Here the transistor provides protection. A transistor in between will allow a 5V signal from the microconytroller to switch a 12V signal via the transistor to the relay - thus turning it *On*. The LED is connected in such a way that it will be lit when the relay is turned *On*. In the event of a back emf voltage spike or some other undesired event only your transistor will be blown, instead of the entire circuit. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+
+The FT232RL USB to UART TTL Module is the best module available in the market which supports serial programming that is supported by the microcontroller. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+
 ## Component Study
 
 ### MT8870 DTMF Decoder Module
