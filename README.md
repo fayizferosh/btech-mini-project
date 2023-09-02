@@ -1,6 +1,6 @@
 # Electronic Lock based on DTMF along with LCD Display
 
-![Static Badge](https://img.shields.io/badge/OS-Windows_10-orange)
+![Static Badge](https://img.shields.io/badge/OS-Windows-orange)
 ![Static Badge](https://img.shields.io/badge/Tools-Fritzing%2C_Arduino_IDE%2C_Proteus_8_Professional-navy)
 ![Static Badge](https://img.shields.io/badge/language-Arduino_Code_--_C_C++-crimson)
 ![GitHub last commit](https://img.shields.io/github/last-commit/fayizferosh/btech-mini-project)
