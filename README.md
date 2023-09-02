@@ -299,3 +299,166 @@ The DTMF module has a 3.5 mm audio input Jack that can be easily connected with 
 | C | H | L | - | - | - | - | 
 | D | H | L | - | - | - | - |
 
+### 16x2 LCD Display
+
+| ![16x2-LCD-Pinout](https://github.com/fayizferosh/btech-mini-project/assets/63997454/17f45d12-e3da-4696-8ec7-9e4824246476) |
+|:--:|
+| *16x2 LCD Display* |
+
+LCD modules are very commonly used in most embedded projects, the reason being its cheap price, availability and programmer friendly. Most of us would have come across these displays in our day to day life, either at PCO’s or calculators. The appearance and the pinouts have already been visualized above now let us get a bit technical.
+
+16×2 LCD is named so because; it has 16 Columns and 2 Rows. There are a lot of combinations available like, 8×1, 8×2, 10×2, 16×1, etc. but the most used one is the 16×2 LCD. So, it will have (16×2=32) 32 characters in total and each character will be made of 5×8 Pixel Dots. A Single character with all its Pixels is shown in the below picture.
+
+| ![16x2-LCD-Pixel](https://github.com/fayizferosh/btech-mini-project/assets/63997454/c1ff6d8c-ba61-411d-bc36-8eb3946668c0) |
+|:--:|
+| *Pixels of a single character* |
+
+Now, we know that each character has (5×8=40) 40 Pixels and for 32 Characters we will have (32×40) 1280 Pixels. Further, the LCD should also be instructed about the Position of the Pixels. Hence it will be a hectic task to handle everything with the help of MCU, hence an Interface IC like HD44780is used, which is mounted on the backside of the LCD Module itself. The function of this IC is to get the Commands and Data from the MCU and process them to display meaningful information onto our LCD Screen. You can learn how to interface an LCD using the above mentioned links. If you are an advanced programmer and would like to create your own library for interfacing your Microcontroller with this LCD module then you have to understand the HD44780 IC is working and commands which can be found its datasheet.
+
+#### 16x2 LCD Display Pinout Description
+
+| Pin # | Pin Name | Description |
+| ----------- | ----------- | ----------- |
+| 1 | VSS | GND | 
+| 2 | VDD | VCC (+5V DC) | 
+| 3 | VE | Decides the contrast level of display. | 
+| 4 | RS (Register Select) | Connected to Microcontroller to shift between command/data register | 
+| 5 | RW (Read/Write) | Normally grounded to write data to LCD | 
+| 6 | E (Enable) | Connected to Microcontroller Pin and toggled between 1 and 0 for data acknowledgement |
+| 7 | DB0 | Bi-directional data bus line 0 (LSB) | 
+| 8 | DB1 | Bi-directional data bus line 1 | 
+| 9 | DB2 | Bi-directional data bus line 2 | 
+| 10 | DB3 | Bi-directional data bus line 3 | 
+| 11 | DB4 | Bi-directional data bus line 4 | 
+| 12 | DB5 | Bi-directional data bus line 5 | 
+| 13 | DB6 | Bi-directional data bus line 6 | 
+| 14 | DB7 | Bi-directional data bus line 7 (MSB) | 
+| 15 | LED+ | Backlight VCC | 
+| 16 | LED- | Backlight GND |
+
+All of the codes required to program the LCD display can be found in reference.
+
+### ATmega328P Microcontroller
+
+| ![atmega328-removebg](https://github.com/fayizferosh/btech-mini-project/assets/63997454/e687ef43-68b5-4726-a4e0-6729ebc4ab90) |
+|:--:|
+| *ATmega328P Microcontroller* |
+
+The ATmega328 is a single-chip microcontroller created by Atmel in the megaAVR family (later Microchip Technology acquired Atmel in 2016). It has a modified Harvard architecture 8-bit RISC processor core.
+
+The Atmel 8-bit AVR RISC-based microcontroller combines 32 KB ISP flash memory with read-while-write capabilities, 1 KB EEPROM, 2 KB SRAM, 23 general purpose I/O lines, 32 general purpose working registers, three flexible timer/counters with compare modes, internal and external interrupts, serial programmable USART, a byte-oriented 2-wire serial interface, SPI serial port, 6-channel 10-bit A/D converter (8-channels in TQFP and QFN/MLF packages), programmable watchdog timer with internal oscillator, and five software selectable power saving modes. The device operates between 1.8-5.5 volts. The device achieves throughput approaching 1 MIPS per MHz.
+
+We burned Arduino Uno bootloader onto this microcontroller and so we use Arduino IDE to write the program and rest of the details can be found in the datasheet.
+
+### 5V Relay Module
+
+| ![1-Channel-5V-10A-Relay-Module-2](https://github.com/fayizferosh/btech-mini-project/assets/63997454/6021a2bd-0415-4932-8136-f44080c73aab) |
+|:--:|
+| *5V Relay Module* |
+
+Relays are most commonly used switching device in electronics. Let us learn how to use one in our circuits based on the requirement of our project.
+
+Before we proceed with the circuit to drive the relay we have to consider two important parameter of the relay. Once is the Trigger Voltage, this is the voltage required to turn on the relay that is to change the contact from Common->NC to Common->NO. Our relay here has 5V trigger voltage, but you can also find relays of values 3V, 6V and even 12V so select one based on the available voltage in your project. The other parameter is your Load Voltage & Current, this is the amount of voltage or current that the NC,NO or Common terminal of the relay could withstand, in our case for DC it is maximum of 30V and 10A. Make sure the load you are using falls into this range.
+
+| ![relay_sch-1024x602](https://github.com/fayizferosh/btech-mini-project/assets/63997454/819df045-9138-4a11-9ce7-2030845ab0e0) |
+|:--:|
+| *5V Relay Module Circuit Diagram* |
+
+The circuit diagram shows a bare-minimum concept for a relay to operate. Since the relay has 5V trigger voltage we have used a +5V DC supply to one end of the coil and the other end to ground through a switch. This switch can be anything from a small transistor to a microcontroller or a microprocessor which can perform switching operating. The purpose of the transistor is to protect the switch from high voltage spike that can produced by the relay coil. One end of the load can be connected to the Common pin and the other end is either connected to NO or NC. If connected to NO the load remains disconnected before trigger and if connected to NC the load remains connected before trigger. The datasheet can be found in reference.
+
+### 12V Solenoid Actuator
+
+| ![SOL12V_-_Main-500x500-removebg-preview](https://github.com/fayizferosh/btech-mini-project/assets/63997454/71382c3d-5691-4c39-9cc1-6c6b153ae4da) |
+|:--:|
+| *12V Solenoid Actuator* |
+
+A solenoid actuator is an electrically controlled actuator. The actuator features a solenoid, which is an electric coil with a movable ferromagnetic core (plunger) in its center.
+
+| ![image](https://github.com/fayizferosh/btech-mini-project/assets/63997454/7a68361a-ee31-484c-bff9-ab11916f534d) |
+|:--:|
+| *12V Solenoid Actuator Working Diagram* |
+
+In the rest position, the plunger closes off. An electric current through the coil creates a magnetic field. The magnetic field exerts an upwards force on the plunger opening it. This is the basic principle that is used to open and close solenoid actuator.
+
+### FT232RL USB to UART TTL Module
+
+| ![usb-ttl-ft232rl-pinout](https://github.com/fayizferosh/btech-mini-project/assets/63997454/1add3ba0-896d-4af9-b303-9705453b0d0d) |
+|:--:|
+| *FT232RL USB to UART TTL Module* |
+
+The USB to TTL serial adapter is based on the high quality and very popular FTDI FT232RL chipset and is an excellent way to connect TTL serial devices to a PC through a USB port.
+
+This USB to TTL serial adapter is ideal for many uses, including:
+
+* Programming microprocessors such as ARM, AVR, etc 
+* Working with computing hardware such as routers and switches
+* Serial communication with many devices such as GPS devices 
+* Serial terminals on devices like the Raspberry Pi
+
+Unlike most USB to TTL serial adapters, this adapter supports both 5V AND 3.3V operation! Simply set the jumper as required to choose between 5V and 3.3V as labelled on the board.
+
+The adapter comes with a right-angle connector fitted allowing you to use it straight away. If you need to access any of the other inputs or outputs of the FT232RL, all the useful signals are provided as through-hole solder pads - ideal for use with straight headers into a breadboard, for example.
+
+The main connector has 6 pins: 
+
+* **DTR:** Data Terminal Ready - an output used for flow control
+* **RX:** Serial data Receive pin
+* **TX:** Serial data Transmit pin
+* **VCC:** Positive voltage output - this is controlled by the jumper. If the jumper is set to 5V, this will provide a 5V output. If the jumper is set to 3.3V, this will provide a 3.3V output. 
+* **CTS:** Clear To Send - an input used for flow control
+* **GND:** Ground or 0V
+
+For most uses, you can simply connect the following pins:
+
+* **RX** on this board to the **TX** pin on your device 
+* **TX** on this board to the **RX** pin on your device 
+* **GND** on this board to **GND** on your device
+
+The **VCC** pin is ideal for powering small devices such as homemade circuits. This pin should not be connected when a device has a separate power supply as this may damage both devices.
+
+Please note that in 5V mode the maximum current draw on this pin is approximately 500mA. In 3.3V mode the maximum current draw on **VCC** is approximately 50mA.
+
+There are also several pins available as solder pads. These pins are labelled on the board. Connecting to these pins is not usually required and you should check the FTDI datasheet before doing so.
+
+This adapter supports the following operating systems: 
+
+* Windows 2000 (32 bit) 
+* Windows XP (32 and 64 bit)
+* Windows Vista (32 and 64 bit) 
+* Windows 7 (32 and 64 bit) 
+* Windows 8 (32 and 64 bit) 
+* Windows 8.1 (32 and 64 bit) 
+* Linux 2.6+ 
+* Mac OS X 10.4, 10.5, 10.6, 10.7, 10.8 and 10.9
+
+The FT232RL is a USB to serial UART interface IC with the following advanced features:
+
+* Single chip USB to asynchronous serial data transfer interface. 
+* Entire USB protocol handled on the chip. No USB specific firmware programming required.
+* Fully integrated 1024 bit EEPROM storing device descriptors and CBUS I/O configuration. 
+* Fully integrated USB termination resistors. 
+* Fully integrated clock generation with no external crystal required plus optional clock output selection enabling a glue-less interface to external MCU or FPGA. 
+* Data transfer rates from 300 baud to 3 Mbaud (RS422, RS485, RS232) at TTL levels. 
+* 128 byte receive buffer and 256 byte transmit buffer utilising buffer smoothing technology to allow for high data throughput.
+
+The connections can be found in the above schematic. The rest of the details about this can be found in the datasheet in reference.
+
+## References
+
+1. Garage4hackers Forum. (2013, April. 2). Fuzzing DTMF Detection Algorithms \[Online\]. Available: [http://garage4hackers.com/content.php?r=146-Fuzzing-DTMF-Detection-Algorithms](http://garage4hackers.com/content.php?r=146-Fuzzing-DTMF-Detection-Algorithms)
+2. GENAVE. (2020). DTMF Explained \[Online\]. Available: [http://genave.com/dtmf/](http://genave.com/dtmf/)
+3. WIKIPEDIA. (2020, Nov. 1). Electromagnetic Lock \[Online\]. Available: [https://en.wikipedia.org/wiki/Electromagnetic_lock](https://en.wikipedia.org/wiki/Electromagnetic_lock)
+4. WIKIPEDIA. (2020, Sep. 20). Digital signal processing \[Online\]. Available: [https://en.wikipedia.org/wiki/Digital_signal_processing](https://en.wikipedia.org/wiki/Digital_signal_processing)
+5. WIKIPEDIA. (2020, Oct. 31). Dual-tone multi-frequency signaling \[Online\]. Available: [https://en.wikipedia.org/wiki/Dual-tone_multi-frequency_signaling](https://en.wikipedia.org/wiki/Dual-tone_multi-frequency_signaling)
+6. Rohit Sharma, Kushagra Kumar, Shashank Vig, “DTMF Based Remote Control System,” in 2006 IEEE International Conference on Industrial Technology, Mumbai, India, 2006.
+7. Praveen. (2014). Digital Code Lock using Arduino with LCD Display and User Defined Password \[Online\]. Available: [https://www.circuitstoday.com/advanced-digital-code-lock-using-arduino](https://www.circuitstoday.com/advanced-digital-code-lock-using-arduino)
+8. Bishwajit Banik Pathik, A. S. M. Ashraf Ahmed, Labina Alamgir, Abu Nayeem, ” Development of a cell phone based vehicle remote control system,” in 2014 International Conference on Intelligent Green Building and Smart Grid (IGBSG), Taipei, Taiwan, 2014.
+9. FTDI Chip, “Incorporating Clock Generator Output and FTDI Chip-ID™ Security Dongle,” FT232R USB UART I.C. datasheet, Aug. 2005 \[Revised Jan. 2006\].
+10. ZARLINK Semicondutor, “MT8870D/MT8870D-1 ISOˆ2 -CMOS Integrated DTMF Receiver,” MT8870 DTMF Decoder datasheet, 1997 \[Revised Oct. 2006\].
+11. Md. Maksudur Rahman, M. Sowket Ali, Md. Shoaib Akther, “Password Protected Electronic Lock System for Smart Home Security,” International Journal Of Engineering Research & Technology (IJERT), vol. 7, issue. 04, pp. 541-544, April 2018.
+12. educ8s.tv. (2015, Feb. 22). Arduino on a Breadboard \[Online\]. Available: [http://educ8s.tv/arduino-on-a-breadboard/](http://educ8s.tv/arduino-on-a-breadboard/)
+13. SONGLE, “Songle Relay,” 5V Relay datasheet, 2014 \[Revised Sep. 2017\].
+14. COMPONENTS 101. (2017, Sep. 26). 5V 5-Pin Relay \[Online\]. Available: [https://components101.com/5v-relay-pinout-working-datasheet](https://components101.com/5v-relay-pinout-working-datasheet)
+15. COMPONENTS 101. (2020, April. 20). MT8870 DTMF Decoder Module \[Online\]. Available: [https://components101.com/modules/mt8870-dtmf-decoder-module](https://components101.com/modules/mt8870-dtmf-decoder-module)
+16. Circuit Basics (March 29, 2015). ARDUINO LCD SET UP AND PROGRAMMING GUIDE \[Online\]. Available: [https://www.circuitbasics.com/how-to-set-up-an-lcd-display-on-an-arduino/](https://www.circuitbasics.com/how-to-set-up-an-lcd-display-on-an-arduino/)
+17. Foros de Electrónica (August 6, 2013). Replacement for the MT8870 chip to simulate in PROTEUS ISIS \[Online\]. Available: [https://www.forosdeelectronica.com/threads/sustituto-al-chip-mt8870-para-simular-en-isis-de-proteus.102780/#post-1036105](https://www.forosdeelectronica.com/threads/sustituto-al-chip-mt8870-para-simular-en-isis-de-proteus.102780/#post-1036105)
