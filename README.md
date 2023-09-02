@@ -1,14 +1,6 @@
 # Electronic Lock based on DTMF along with LCD Display
 
-![Static Badge](https://img.shields.io/badge/OS-Windows-orange)
-![Static Badge](https://img.shields.io/badge/Tools-Fritzing%2C_Arduino_IDE%2C_Proteus_8_Professional-navy)
-![Static Badge](https://img.shields.io/badge/language-Arduino_Code_--_C_C++-crimson)
-![GitHub last commit](https://img.shields.io/github/last-commit/fayizferosh/btech-mini-project)
-![GitHub language count](https://img.shields.io/github/languages/count/fayizferosh/btech-mini-project)
-![GitHub top language](https://img.shields.io/github/languages/top/fayizferosh/btech-mini-project)
-![GitHub repo size](https://img.shields.io/github/repo-size/fayizferosh/btech-mini-project)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fayizferosh/btech-mini-project)
-![GitHub repo file count (file type)](https://img.shields.io/github/directory-file-count/fayizferosh/btech-mini-project)
+
 <!---
 Comments
 -->
