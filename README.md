@@ -23,9 +23,9 @@ Comments
 
 The main objective of our design project is to design and implement a locking mechanism, which can be unlocked using a passcode via DTMF decoder and all the information being displayed on the 16x2 LCD display, the design was limited to a solenoid actuator as the locking mechanism since this is just a prototype and it was implemented using ATmega328P microcontroller as the project's brain.
 
-Though practically on any passcode lock we use a keypad on for input code, here we are trying on interfacing it with DTMF input through a DTMF decoder since it provides an advantage of being able to literally make a call from any point in the world to unlock this.
+Though practically on any passcode lock I use a keypad on for input code, here I am trying on interfacing it with DTMF input through a DTMF decoder since it provides an advantage of being able to literally make a call from any point in the world to unlock this.
 
-And also as future plans we also wish to interface a keyboard on to the setup like in any normal passcode locks. One of the main application is a passcode door lock.
+And also as future plans I also wish to interface a keyboard on to the setup like in any normal passcode locks. One of the main application is a passcode door lock.
 
 ### Objective
 
@@ -47,8 +47,8 @@ The objective is to create a passcode unlockable lock with a display which shows
 
 The drawbacks of the existing models are:
 * Expensive.
-* Lacks display (there are models with display but they are more expensive compared to the models without display we've shown here).
-* Consumes too much power (compared to the model we're designing).
+* Lacks display (there are models with display but they are more expensive compared to the models without display I have shown here).
+* Consumes too much power (compared to the model I'm designing).
 
 The advantages of our model over the existing ones are:
 * Cheap compared to the existing models.
@@ -104,15 +104,15 @@ The software used during the course of completion of our project:
 
 #### Fritzing 0.9.3
 
-Fritzing is an open-source initiative to develop amateur or hobby CAD software for the design of electronics hardware, to support designers and artists ready to move from experimenting with a prototype to building a more permanent circuit. We used this for drawing schematic of the circuit and to generate breadboard wiring diagram.
+Fritzing is an open-source initiative to develop amateur or hobby CAD software for the design of electronics hardware, to support designers and artists ready to move from experimenting with a prototype to building a more permanent circuit. I used this for drawing schematic of the circuit and to generate breadboard wiring diagram.
 
 #### Arduino IDE 1.8.13
 
-The open-source Arduino Software (IDE) makes it easy to write code and upload it to the board. This software can be used with any Arduino board. Since we've burned Arduino Uno bootloader to ATmega328P, therefore we use this software itself to write the code.
+The open-source Arduino Software (IDE) makes it easy to write code and upload it to the board. This software can be used with any Arduino board. Since I have burned Arduino Uno bootloader to ATmega328P, therefore I use this software itself to write the code.
 
 #### Proteus 8 Professional
 
-The Proteus Design Suite is a proprietary software tool suite used primarily for electronic design automation. The software is used mainly by electronic design engineers and technicians to create schematics and electronic prints for manufacturing printed circuit boards. We used this for simulation of the circuit.
+The Proteus Design Suite is a proprietary software tool suite used primarily for electronic design automation. The software is used mainly by electronic design engineers and technicians to create schematics and electronic prints for manufacturing printed circuit boards. I used this for simulation of the circuit.
 
 ## Circuit Diagram
 
@@ -134,15 +134,15 @@ The Proteus Design Suite is a proprietary software tool suite used primarily for
 
 ### Design
 
-We chose ATmega328P since we required a microcontroller but we didn't know Assembly Language Programming required to use a microcontroller. We burned Arduino Uno bootloader to the microcontroller so that we could code it using Arduino code which we knew. To use ATmega328P microcontroller as Arduino on breadboard we required just a 16 MHz crystal along with two 22pF ceramic capacitor. But to program we required an extra 100nF ceramic capacitor. All the connections are avalable in schematics above. The reference used for this is in "Reference" section.
+I chose ATmega328P since I required a microcontroller but I didn't know Assembly Language Programming required to use a microcontroller. I burned Arduino Uno bootloader to the microcontroller so that I could code it using Arduino code which I knew. To use ATmega328P microcontroller as Arduino on breadboard I required just a 16 MHz crystal along with two 22pF ceramic capacitor. But to program I required an extra 100nF ceramic capacitor. All the connections are avalable in schematics above. The reference used for this is in "Reference" section.
 
-We used MT8870 DTMF Decoder Module since it provides information on the key pressed on DTMF keypad a 4-bit code for a key so in total 16 keys. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+I used MT8870 DTMF Decoder Module since it provides information on the key pressed on DTMF keypad a 4-bit code for a key so in total 16 keys. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
 
-The 16x2 LCD is very easy to interface with Arduino board, which is the exact reason why we chose it as the display for our project. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+The 16x2 LCD is very easy to interface with Arduino board, which is the exact reason why I chose it as the display for our project. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
 
-The 12V Soleniod was the best component available to us to demonstrate the locking function that we required. Since this is a prototype, as we develop further we will be making significant changes. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+The 12V Soleniod was the best component available to us to demonstrate the locking function that I required. Since this is a prototype, as I develop further I will be making significant changes. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
 
-For interfacing LEDs we know that both our supply and microcontroller output voltage are 5V and that the forward current of the LED to be 10mA from LED datasheet. So using the equation:
+For interfacing LEDs I know that both our supply and microcontroller output voltage are 5V and that the forward current of the LED to be 10mA from LED datasheet. So using the equation:
 
 ```math
 Resistance = \frac{(BatteryVoltage - LEDMinForwardVoltage)}{LEDForwardCurrent}
@@ -154,9 +154,9 @@ Substituting,
 Resistance = \frac{(5V - 2V)}{10mA} = \frac{3V}{10mA} = 300\Omega
 ```
 
-So, approximately we took 330 $\Omega$ resistor.
+So, approximately I took 330 $\Omega$ resistor.
 
-Since using relay without proper circuits required might cause back emf voltage spike or some other undesired event, which is the reason why we chose the Relay Module. The circuit consists of a transistor an LED and few resistors. Here the transistor provides protection. A transistor in between will allow a 5V signal from the microconytroller to switch a 12V signal via the transistor to the relay - thus turning it *On*. The LED is connected in such a way that it will be lit when the relay is turned *On*. In the event of a back emf voltage spike or some other undesired event only your transistor will be blown, instead of the entire circuit. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+Since using relay without proper circuits required might cause back emf voltage spike or some other undesired event, which is the reason why I chose the Relay Module. The circuit consists of a transistor an LED and few resistors. Here the transistor provides protection. A transistor in between will allow a 5V signal from the microconytroller to switch a 12V signal via the transistor to the relay - thus turning it *On*. The LED is connected in such a way that it will be lit when the relay is turned *On*. In the event of a back emf voltage spike or some other undesired event only your transistor will be blown, instead of the entire circuit. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
 
 The FT232RL USB to UART TTL Module is the best module available in the market which supports serial programming that is supported by the microcontroller. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
 
@@ -171,11 +171,11 @@ The working can be expained mainly by explaining in detail the interfacing of th
 
 ### Interfacing of DTMF Decoder Module
 
-The DTMF Decoder Module connections are there in the above schematics and it's working is explained in "Component Study" section. As we know the output of the module is a binary code which indicates any one value on the DTMF keypad as well a bit that indicates whenever DTMF tone is recieved so we just gave this as input to 5 digitals pins of the microcontroller and wrote the code to recognize what the user's input is.
+The DTMF Decoder Module connections are there in the above schematics and it's working is explained in "Component Study" section. As I know the output of the module is a binary code which indicates any one value on the DTMF keypad as well a bit that indicates whenever DTMF tone is recieved so I just gave this as input to 5 digitals pins of the microcontroller and wrote the code to recognize what the user's input is.
 
 ### Interfacing of 16x2 LCD Display
 
-The 16x2 LCD Display connections are there in the above schematics. Now here we just used the respective codes which are explained in "Component Study" section to display all the information on the LCD Display. The information we display are :-
+The 16x2 LCD Display connections are there in the above schematics. Now here I just used the respective codes which are explained in "Component Study" section to display all the information on the LCD Display. The information I display are :-
 
 1. ***Press any key***
 2. ***Enter the pass: \*\*\*\****
@@ -191,21 +191,21 @@ The 16x2 LCD Display connections are there in the above schematics. Now here we 
 
 ### Interfacing of Relay Module
 
-The Relay Module connections are there in the above schematics and it's working is explained in "Component Study" section.. As we know that we use relay as a switch to *On/Off* high voltage components by applying low voltage so, we take an output from a digital pin of the microcontroller as our input to relay to turn *On/Off* the Solenoid Actuator (works at 12V - 1A).
+The Relay Module connections are there in the above schematics and it's working is explained in "Component Study" section.. As I know that I use relay as a switch to *On/Off* high voltage components by applying low voltage so, I take an output from a digital pin of the microcontroller as our input to relay to turn *On/Off* the Solenoid Actuator (works at 12V - 1A).
 
-Since we have a normally closed terminal which disconnects when relay is actuated, we connect a red LED here to indicate the *Off/Locked* state of the Solenoid.
+Since I have a normally closed terminal which disconnects when relay is actuated, I connect a red LED here to indicate the *Off/Locked* state of the Solenoid.
 
-And when the Solenoid ("Component Study" section.) is actuated we have coded the microcontroller to give an output on a digital pin which is connected to a green LED to indicate the *On/Unlocked* state of the Solenoid.
+And when the Solenoid ("Component Study" section.) is actuated I have coded the microcontroller to give an output on a digital pin which is connected to a green LED to indicate the *On/Unlocked* state of the Solenoid.
 
 ### Code
 
-We are using ATmega328P microcontroller and we've burned Arduino Uno bootloader to it. Also there is a programming circuit saperately for programming the microcontroller which can be easily understood by just referring the connections in  the above schematics. So, we use Arduino coding itself to program the microcontroller. The code is pretty self explanatory with proper comments. The code is uploaded in the repository.
+I are using ATmega328P microcontroller and I've burned Arduino Uno bootloader to it. Also there is a programming circuit saperately for programming the microcontroller which can be easily understood by just referring the connections in  the above schematics. So, I use Arduino coding itself to program the microcontroller. The code is pretty self explanatory with proper comments. The code is uploaded in the repository.
 
 ## Testing & Simulation
 
 ### Testing
 
-Once the whole circuit was wired we tested it multiple times to ensure the reliability of the prototype. The details of a few tests are given below.
+Once the whole circuit was wired I tested it multiple times to ensure the reliability of the prototype. The details of a few tests are given below.
 
 | Test # | Description | Outcome |
 | :-----------: | :-----------: | :-----------: |
@@ -220,11 +220,11 @@ Once the whole circuit was wired we tested it multiple times to ensure the relia
 | 9 | Locking | $\color{green}{Passed}$ | 
 | 10 | Wrong Passcode | $\color{green}{Passed}$ |
 
-Since out of 10 tests, the prototype only failed about twice, therefore we can conclude that the design is about 80% - 90% reliable. Since we are developing the prototype, we are sure that we we'll be able to make tremendous progress.
+Since out of 10 tests, the prototype only failed about twice, therefore I can conclude that the design is about 80% - 90% reliable. Since I are developing the prototype, I are sure that I I'll be able to make tremendous progress.
 
 ### Simulation
 
-We simulated the prototype by replacing the microcontroller with Arduino Uno board since, we're using Arduino on breadboard which is not available for simulation in Proteus 8 Professional. Also for simulation the DTMF Decoder Module was also not available in Proteus 8 Professional so we used an alternative setup from a site Foros de Electronica a spanish Electronics Forum which is available in the reference. The prototype simulation worked out fine, which helped us ensure that our code is correct and working.
+I simulated the prototype by replacing the microcontroller with Arduino Uno board since, I're using Arduino on breadboard which is not available for simulation in Proteus 8 Professional. Also for simulation the DTMF Decoder Module was also not available in Proteus 8 Professional so I used an alternative setup from a site Foros de Electronica a spanish Electronics Forum which is available in the reference. The prototype simulation worked out fine, which helped us ensure that our code is correct and working.
 
 | ![Picture15](https://github.com/fayizferosh/btech-mini-project/assets/63997454/d5c2416e-f0ef-4c71-a031-b730f9820622) |
 |:--:|
@@ -313,7 +313,7 @@ LCD modules are very commonly used in most embedded projects, the reason being i
 |:--:|
 | *Pixels of a single character* |
 
-Now, we know that each character has (5×8=40) 40 Pixels and for 32 Characters we will have (32×40) 1280 Pixels. Further, the LCD should also be instructed about the Position of the Pixels. Hence it will be a hectic task to handle everything with the help of MCU, hence an Interface IC like HD44780is used, which is mounted on the backside of the LCD Module itself. The function of this IC is to get the Commands and Data from the MCU and process them to display meaningful information onto our LCD Screen. You can learn how to interface an LCD using the above mentioned links. If you are an advanced programmer and would like to create your own library for interfacing your Microcontroller with this LCD module then you have to understand the HD44780 IC is working and commands which can be found its datasheet.
+Now, I know that each character has (5×8=40) 40 Pixels and for 32 Characters I will have (32×40) 1280 Pixels. Further, the LCD should also be instructed about the Position of the Pixels. Hence it will be a hectic task to handle everything with the help of MCU, hence an Interface IC like HD44780is used, which is mounted on the backside of the LCD Module itself. The function of this IC is to get the Commands and Data from the MCU and process them to display meaningful information onto our LCD Screen. You can learn how to interface an LCD using the above mentioned links. If you are an advanced programmer and would like to create your own library for interfacing your Microcontroller with this LCD module then you have to understand the HD44780 IC is working and commands which can be found its datasheet.
 
 #### 16x2 LCD Display Pinout Description
 
@@ -348,7 +348,7 @@ The ATmega328 is a single-chip microcontroller created by Atmel in the megaAVR f
 
 The Atmel 8-bit AVR RISC-based microcontroller combines 32 KB ISP flash memory with read-while-write capabilities, 1 KB EEPROM, 2 KB SRAM, 23 general purpose I/O lines, 32 general purpose working registers, three flexible timer/counters with compare modes, internal and external interrupts, serial programmable USART, a byte-oriented 2-wire serial interface, SPI serial port, 6-channel 10-bit A/D converter (8-channels in TQFP and QFN/MLF packages), programmable watchdog timer with internal oscillator, and five software selectable power saving modes. The device operates between 1.8-5.5 volts. The device achieves throughput approaching 1 MIPS per MHz.
 
-We burned Arduino Uno bootloader onto this microcontroller and so we use Arduino IDE to write the program and rest of the details can be found in the datasheet.
+I burned Arduino Uno bootloader onto this microcontroller and so I use Arduino IDE to write the program and rest of the details can be found in the datasheet.
 
 ### 5V Relay Module
 
@@ -358,13 +358,13 @@ We burned Arduino Uno bootloader onto this microcontroller and so we use Arduino
 
 Relays are most commonly used switching device in electronics. Let us learn how to use one in our circuits based on the requirement of our project.
 
-Before we proceed with the circuit to drive the relay we have to consider two important parameter of the relay. Once is the Trigger Voltage, this is the voltage required to turn on the relay that is to change the contact from Common->NC to Common->NO. Our relay here has 5V trigger voltage, but you can also find relays of values 3V, 6V and even 12V so select one based on the available voltage in your project. The other parameter is your Load Voltage & Current, this is the amount of voltage or current that the NC,NO or Common terminal of the relay could withstand, in our case for DC it is maximum of 30V and 10A. Make sure the load you are using falls into this range.
+Before I proceed with the circuit to drive the relay I have to consider two important parameter of the relay. Once is the Trigger Voltage, this is the voltage required to turn on the relay that is to change the contact from Common->NC to Common->NO. Our relay here has 5V trigger voltage, but you can also find relays of values 3V, 6V and even 12V so select one based on the available voltage in your project. The other parameter is your Load Voltage & Current, this is the amount of voltage or current that the NC,NO or Common terminal of the relay could withstand, in our case for DC it is maximum of 30V and 10A. Make sure the load you are using falls into this range.
 
 | ![relay_sch-1024x602](https://github.com/fayizferosh/btech-mini-project/assets/63997454/819df045-9138-4a11-9ce7-2030845ab0e0) |
 |:--:|
 | *5V Relay Module Circuit Diagram* |
 
-The circuit diagram shows a bare-minimum concept for a relay to operate. Since the relay has 5V trigger voltage we have used a +5V DC supply to one end of the coil and the other end to ground through a switch. This switch can be anything from a small transistor to a microcontroller or a microprocessor which can perform switching operating. The purpose of the transistor is to protect the switch from high voltage spike that can produced by the relay coil. One end of the load can be connected to the Common pin and the other end is either connected to NO or NC. If connected to NO the load remains disconnected before trigger and if connected to NC the load remains connected before trigger. The datasheet can be found in reference.
+The circuit diagram shows a bare-minimum concept for a relay to operate. Since the relay has 5V trigger voltage I have used a +5V DC supply to one end of the coil and the other end to ground through a switch. This switch can be anything from a small transistor to a microcontroller or a microprocessor which can perform switching operating. The purpose of the transistor is to protect the switch from high voltage spike that can produced by the relay coil. One end of the load can be connected to the Common pin and the other end is either connected to NO or NC. If connected to NO the load remains disconnected before trigger and if connected to NC the load remains connected before trigger. The datasheet can be found in reference.
 
 ### 12V Solenoid Actuator
 
