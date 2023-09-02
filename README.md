@@ -1,5 +1,18 @@
 # Electronic Lock based on DTMF along with LCD Display
 
+![Static Badge](https://img.shields.io/badge/OS-Windows_10-orange)
+![Static Badge](https://img.shields.io/badge/Tools-Fritzing%2C_Arduino_IDE%2C_Proteus_8_Professional-navy)
+![Static Badge](https://img.shields.io/badge/language-Arduino_Code_--_C_C++-crimson)
+![GitHub last commit](https://img.shields.io/github/last-commit/fayizferosh/btech-mini-project)
+![GitHub language count](https://img.shields.io/github/languages/count/fayizferosh/btech-mini-project)
+![GitHub top language](https://img.shields.io/github/languages/top/fayizferosh/btech-mini-project?color=blue)
+![GitHub repo size](https://img.shields.io/github/repo-size/fayizferosh/btech-mini-project)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fayizferosh/btech-mini-project)
+![GitHub repo file count (file type)](https://img.shields.io/github/directory-file-count/fayizferosh/btech-mini-project)
+<!---
+Comments
+-->
+
 > An [electronic lock](https://en.wikipedia.org/wiki/Electronic_lock) which can be unlocked when the correct passcode is entered though a [DTMF](https://en.wikipedia.org/wiki/Dual-tone_multi-frequency_signaling) Keypad accompanied by a 16x2 [LCD](https://en.wikipedia.org/wiki/Liquid-crystal_display) Display which displays the same. When the passcode is entered in the [DTMF](https://en.wikipedia.org/wiki/Dual-tone_multi-frequency_signaling) Keypad, that data is decoded and the necessary details are sent to a 16x2 [LCD](https://en.wikipedia.org/wiki/Liquid-crystal_display) Display to display the same and is also compared with the already set passcode \[which can be altered if necessary, only by entering the current passcode (as a security measure)\] and if they are same sends the necessary signals to unlock the [electronic fail-secure lock](https://en.wikipedia.org/wiki/Electronic_lock).
 
 | <img src="https://github.com/fayizferosh/btech-mini-project/assets/63997454/9e2776d3-289e-4bb1-a58c-d7cf3cc67d96"  width="35%" height="35%"> |
@@ -147,6 +160,86 @@ Since using relay without proper circuits required might cause back emf voltage 
 
 The FT232RL USB to UART TTL Module is the best module available in the market which supports serial programming that is supported by the microcontroller. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
 
+## General Working
+
+The working can be expained mainly by explaining in detail the interfacing of the main components in the project with the microcontroller. And rest of the part can be explained using the code that was given to the microcontroller, i.e., 
+
+1. Interfacing of DTMF Decoder Module
+2. Interfacing of 16x2 LCD Display
+3. Interfacing of Relay Module
+4. Code
+
+### Interfacing of DTMF Decoder Module
+
+The DTMF Decoder Module connections are there in the above schematics and it's working is explained in "Component Study" section. As we know the output of the module is a binary code which indicates any one value on the DTMF keypad as well a bit that indicates whenever DTMF tone is recieved so we just gave this as input to 5 digitals pins of the microcontroller and wrote the code to recognize what the user's input is.
+
+### Interfacing of 16x2 LCD Display
+
+The 16x2 LCD Display connections are there in the above schematics. Now here we just used the respective codes which are explained in "Component Study" section to display all the information on the LCD Display. The information we display are :-
+
+1. ***Press any key***
+2. ***Enter the pass: \*\*\*\****
+3. ***Correct Passcode*** Or
+* * ***Wrong Passcode!*** - returns to instruction 1
+4. ***Press # - UNLOCK***
+* * ***\* - CHANGE PASS***
+5. ***UNLOCKED!*** Or
+* * ***Enter new pass: 1234***
+6. ***Press # to LOCK*** Or
+* * ***New passcode set 1234*** - returns to instruction 1
+7. ***LOCKED!*** - returns to instruction 1
+
+### Interfacing of Relay Module
+
+The Relay Module connections are there in the above schematics and it's working is explained in "Component Study" section.. As we know that we use relay as a switch to *On/Off* high voltage components by applying low voltage so, we take an output from a digital pin of the microcontroller as our input to relay to turn *On/Off* the Solenoid Actuator (works at 12V - 1A).
+
+Since we have a normally closed terminal which disconnects when relay is actuated, we connect a red LED here to indicate the *Off/Locked* state of the Solenoid.
+
+And when the Solenoid ("Component Study" section.) is actuated we have coded the microcontroller to give an output on a digital pin which is connected to a green LED to indicate the *On/Unlocked* state of the Solenoid.
+
+### Code
+
+We are using ATmega328P microcontroller and we've burned Arduino Uno bootloader to it. Also there is a programming circuit saperately for programming the microcontroller which can be easily understood by just referring the connections in  the above schematics. So, we use Arduino coding itself to program the microcontroller. The code is pretty self explanatory with proper comments. The code is uploaded in the repository.
+
+## Testing & Simulation
+
+### Testing
+
+Once the whole circuit was wired we tested it multiple times to ensure the reliability of the prototype. The details of a few tests are given below.
+
+| Test # | Description | Outcome |
+| :-----------: | :-----------: | :-----------: |
+| 1 | Unlocking | $\color{green}{Passed}$ | 
+| 2 | Locking | $\color{green}{Passed}$ | 
+| 3 | Changing Passcode | $\color{red}{Failed}$ | 
+| 4 | Changing Passcode | $\color{green}{Passed}$ | 
+| 5 | Wrong Passcode | $\color{green}{Passed}$ | 
+| 6 | Wrong Passcode | $\color{green}{Passed}$ | 
+| 7 | Unlocking | $\color{red}{Failed}$ | 
+| 8 | Unlocking | $\color{green}{Passed}$ | 
+| 9 | Locking | $\color{green}{Passed}$ | 
+| 10 | Wrong Passcode | $\color{green}{Passed}$ |
+
+Since out of 10 tests, the prototype only failed about twice, therefore we can conclude that the design is about 80% - 90% reliable. Since we are developing the prototype, we are sure that we we'll be able to make tremendous progress.
+
+### Simulation
+
+We simulated the prototype by replacing the microcontroller with Arduino Uno board since, we're using Arduino on breadboard which is not available for simulation in Proteus 8 Professional. Also for simulation the DTMF Decoder Module was also not available in Proteus 8 Professional so we used an alternative setup from a site Foros de Electronica a spanish Electronics Forum which is available in the reference. The prototype simulation worked out fine, which helped us ensure that our code is correct and working.
+
+| ![Picture15](https://github.com/fayizferosh/btech-mini-project/assets/63997454/d5c2416e-f0ef-4c71-a031-b730f9820622) |
+|:--:|
+| *Screenshot of Simulation in Proteus 8 Professional* |
+
+## Experimental Setup
+
+| ![IMG_20210127_135915](https://github.com/fayizferosh/btech-mini-project/assets/63997454/179f5471-c935-4cae-bc81-7a713bf6b7e1) |
+|:--:|
+| *Image of wired working circuit* |
+
+## Conclusion
+
+The aim of this project was to build a DTMF based passcode electronic lock system with LCD Display. Through the development of the project the working of DTMF Decoder Module, 16x2 LCD Display, 5V Relay Module, ATmega328P microcontroller etc were acknowledged and then applied to the project. This project provides an efficient and economical security system.
+
 ## Component Study
 
 ### MT8870 DTMF Decoder Module
@@ -184,7 +277,7 @@ The DTMF module has a 3.5 mm audio input Jack that can be easily connected with 
 #### DTMF Key Mapping
 
 | Key | IN | StQ | Q4 | Q3 | Q2 | Q1 |
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
 | 1 | - | H | 0 | 0 | 0 | 1 | 
 | 2 | - | H | 0 | 0 | 1 | 0 | 
 | 3 | - | H | 0 | 0 | 1 | 1 | 
