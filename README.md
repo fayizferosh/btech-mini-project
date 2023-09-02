@@ -5,7 +5,7 @@
 ![Static Badge](https://img.shields.io/badge/language-Arduino_Code_--_C_C++-crimson)
 ![GitHub last commit](https://img.shields.io/github/last-commit/fayizferosh/btech-mini-project)
 ![GitHub language count](https://img.shields.io/github/languages/count/fayizferosh/btech-mini-project)
-![GitHub top language](https://img.shields.io/github/languages/top/fayizferosh/btech-mini-project?color=blue)
+![GitHub top language](https://img.shields.io/github/languages/top/fayizferosh/btech-mini-project)
 ![GitHub repo size](https://img.shields.io/github/repo-size/fayizferosh/btech-mini-project)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fayizferosh/btech-mini-project)
 ![GitHub repo file count (file type)](https://img.shields.io/github/directory-file-count/fayizferosh/btech-mini-project)
