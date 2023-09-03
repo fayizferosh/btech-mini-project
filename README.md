@@ -43,7 +43,7 @@ The objective is to create a passcode unlockable lock with a display which shows
 
 ## Reproduction
 
-If you want to recreate this project install Arduino IDE buy all the components mentioned in "Componenents Required" section and connect everything as per below circuit diagrams below and insert the code in the repo to the microcontroller using Arduino IDE and the programming circuit.
+If you want to recreate this project install Arduino IDE and buy all the components mentioned in "Componenents Required" section and connect everything as per below circuit diagrams below and insert the code in the repo to the microcontroller using Arduino IDE and the programming circuit.
 
 ## Circuit Diagram
 
