@@ -161,6 +161,16 @@ And when the Solenoid ("Component Study" section.) is actuated I have coded the 
 
 I are using ATmega328P microcontroller and I've burned Arduino Uno bootloader to it. Also there is a programming circuit saperately for programming the microcontroller which can be easily understood by just referring the connections in  the above schematics. So, I use Arduino coding itself to program the microcontroller. The code is pretty self explanatory with proper comments. The code is uploaded in the repository.
 
+## Block Diagrams
+
+![Screenshot 2023-09-01 212526](https://github.com/fayizferosh/btech-mini-project/assets/63997454/95ca7eaf-aa7a-45d2-a5dc-31ee2e200eab)
+
+![Picture2](https://github.com/fayizferosh/btech-mini-project/assets/63997454/04d4bdf9-3bac-41d5-a918-42a66459ec07)
+
+### Explanation
+
+The DTMF tone required (i.e., the key that was pressed) is obtained from a mobile phone via an AUX cable to the DTMF decoder module which is connected to the microcontroller. The DTMF decoder module sends this information to the microcontroller where the data is processed and respective commands to display the instructions on the 16x2 LCD display are run. Further, as the user follows the instructions on the LCD display, when the user press the respective key to unlock the microcontroller processes this information and respective commands to activate the relay are run. Since, the solenoid circuit's swictch here is the relay, when the relay is activated, the solenoid is also actuated.
+
 ## Existing Models
 
 | ![Picture1-removebg-preview](https://github.com/fayizferosh/btech-mini-project/assets/63997454/0afc19cb-3377-4dc8-a8c7-12a1090af355) |
@@ -184,16 +194,6 @@ The advantages of our model over the existing ones are:
 * Cheap compared to the existing models.
 * Has a display.
 * Low power consumption compared to the existing models.
-
-## Block Diagrams
-
-![Screenshot 2023-09-01 212526](https://github.com/fayizferosh/btech-mini-project/assets/63997454/95ca7eaf-aa7a-45d2-a5dc-31ee2e200eab)
-
-![Picture2](https://github.com/fayizferosh/btech-mini-project/assets/63997454/04d4bdf9-3bac-41d5-a918-42a66459ec07)
-
-### Explanation
-
-The DTMF tone required (i.e., the key that was pressed) is obtained from a mobile phone via an AUX cable to the DTMF decoder module which is connected to the microcontroller. The DTMF decoder module sends this information to the microcontroller where the data is processed and respective commands to display the instructions on the 16x2 LCD display are run. Further, as the user follows the instructions on the LCD display, when the user press the respective key to unlock the microcontroller processes this information and respective commands to activate the relay are run. Since, the solenoid circuit's swictch here is the relay, when the relay is activated, the solenoid is also actuated.
 
 ## Components Required
 
