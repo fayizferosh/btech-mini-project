@@ -39,7 +39,10 @@ The objective is to create a passcode unlockable lock with a display which shows
 
 ## Working Video
 
+{% include youtube.html id="kVsmnr1feqs" %}
+<!---
 [![Working Video Design Project](https://img.youtube.com/vi/kVsmnr1feqs/maxresdefault.jpg)](https://www.youtube.com/watch?v=kVsmnr1feqs)
+-->
 
 ## Circuit Diagram
 
