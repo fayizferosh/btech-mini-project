@@ -31,6 +31,132 @@ And also as future plans I also wish to interface a keyboard on to the setup lik
 
 The objective is to create a passcode unlockable lock with a display which shows each and every required instructions and the cost of the model is low compared to existing models in the market and also the model consumes less power (other than the locking mechanism) and so it has very relaiable battery backup (due to low power consumption).
 
+## Experimental Setup
+
+| ![IMG_20210127_135915](https://github.com/fayizferosh/btech-mini-project/assets/63997454/0bd43fbc-a42d-45f3-87f0-5089d70298bd) |
+|:--:|
+| *Image of wired working circuit* |
+
+## Working Video
+
+[![Working Video Design Project](https://img.youtube.com/vi/kVsmnr1feqs/maxresdefault.jpg)](https://www.youtube.com/watch?v=kVsmnr1feqs)
+
+## Circuit Diagram
+
+| ![Design Project_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/20da1aa2-4fe0-4ce3-bd3a-c59c09830dd2) |
+|:--:|
+| *Schematic of the Main Circuit* |
+
+| ![Design-Project-2_bb](https://github.com/fayizferosh/btech-mini-project/assets/63997454/eb5c6892-92fc-4d41-976a-3597ed92e064) |
+|:--:|
+| *Breadboard Wiring of the Main Circuit* |
+
+| ![Design Project 3_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/22772f8f-ee7f-4555-9967-27b79cc67d99) |
+|:--:|
+| *Schematic of the Programming Circuit* |
+
+| ![Design Project 1_bb](https://github.com/fayizferosh/btech-mini-project/assets/63997454/c13a1a9a-0ec8-438b-a1d1-c216b5c8400c) |
+|:--:|
+| *Breadboard Wiring of the Programming Circuit* |
+
+### Design
+
+I chose ATmega328P since I required a microcontroller but I didn't know Assembly Language Programming required to use a microcontroller. I burned Arduino Uno bootloader to the microcontroller so that I could code it using Arduino code which I knew. To use ATmega328P microcontroller as Arduino on breadboard I required just a 16 MHz crystal along with two 22pF ceramic capacitor. But to program I required an extra 100nF ceramic capacitor. All the connections are avalable in schematics above. The reference used for this is in "Reference" section.
+
+I used MT8870 DTMF Decoder Module since it provides information on the key pressed on DTMF keypad a 4-bit code for a key so in total 16 keys. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+
+The 16x2 LCD is very easy to interface with Arduino board, which is the exact reason why I chose it as the display for our project. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+
+The 12V Soleniod was the best component available to us to demonstrate the locking function that I required. Since this is a prototype, as I develop further I will be making significant changes. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+
+For interfacing LEDs I know that both our supply and microcontroller output voltage are 5V and that the forward current of the LED to be 10mA from LED datasheet. So using the equation:
+
+```math
+Resistance = \frac{(BatteryVoltage - LEDMinForwardVoltage)}{LEDForwardCurrent}
+```
+
+Substituting,
+
+```math
+Resistance = \frac{(5V - 2V)}{10mA} = \frac{3V}{10mA} = 300\Omega
+```
+
+So, approximately I took 330 $\Omega$ resistor.
+
+Since using relay without proper circuits required might cause back emf voltage spike or some other undesired event, which is the reason why I chose the Relay Module. The circuit consists of a transistor an LED and few resistors. Here the transistor provides protection. A transistor in between will allow a 5V signal from the microconytroller to switch a 12V signal via the transistor to the relay - thus turning it *On*. The LED is connected in such a way that it will be lit when the relay is turned *On*. In the event of a back emf voltage spike or some other undesired event only your transistor will be blown, instead of the entire circuit. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+
+The FT232RL USB to UART TTL Module is the best module available in the market which supports serial programming that is supported by the microcontroller. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
+
+## Testing & Simulation
+
+### Testing
+
+Once the whole circuit was wired I tested it multiple times to ensure the reliability of the prototype. The details of a few tests are given below.
+
+| Test # | Description | Outcome |
+| :-----------: | :-----------: | :-----------: |
+| 1 | Unlocking | $\color{green}{Passed}$ | 
+| 2 | Locking | $\color{green}{Passed}$ | 
+| 3 | Changing Passcode | $\color{red}{Failed}$ | 
+| 4 | Changing Passcode | $\color{green}{Passed}$ | 
+| 5 | Wrong Passcode | $\color{green}{Passed}$ | 
+| 6 | Wrong Passcode | $\color{green}{Passed}$ | 
+| 7 | Unlocking | $\color{red}{Failed}$ | 
+| 8 | Unlocking | $\color{green}{Passed}$ | 
+| 9 | Locking | $\color{green}{Passed}$ | 
+| 10 | Wrong Passcode | $\color{green}{Passed}$ |
+
+Since out of 10 tests, the prototype only failed about twice, therefore I can conclude that the design is about 80% - 90% reliable. Since I are developing the prototype, I are sure that I I'll be able to make tremendous progress.
+
+### Simulation
+
+I simulated the prototype by replacing the microcontroller with Arduino Uno board since, I're using Arduino on breadboard which is not available for simulation in Proteus 8 Professional. Also for simulation the DTMF Decoder Module was also not available in Proteus 8 Professional so I used an alternative setup from a site Foros de Electronica a spanish Electronics Forum which is available in the reference. The prototype simulation worked out fine, which helped us ensure that our code is correct and working.
+
+| ![Picture15](https://github.com/fayizferosh/btech-mini-project/assets/63997454/8c28be7f-e108-4363-9234-112cfc175762) |
+|:--:|
+| *Screenshot of Simulation in Proteus 8 Professional* |
+
+## General Working
+
+The working can be expained mainly by explaining in detail the interfacing of the main components in the project with the microcontroller. And rest of the part can be explained using the code that was given to the microcontroller, i.e., 
+
+1. Interfacing of DTMF Decoder Module
+2. Interfacing of 16x2 LCD Display
+3. Interfacing of Relay Module
+4. Code
+
+### Interfacing of DTMF Decoder Module
+
+The DTMF Decoder Module connections are there in the above schematics and it's working is explained in "Component Study" section. As I know the output of the module is a binary code which indicates any one value on the DTMF keypad as well a bit that indicates whenever DTMF tone is recieved so I just gave this as input to 5 digitals pins of the microcontroller and wrote the code to recognize what the user's input is.
+
+### Interfacing of 16x2 LCD Display
+
+The 16x2 LCD Display connections are there in the above schematics. Now here I just used the respective codes which are explained in "Component Study" section to display all the information on the LCD Display. The information I display are :-
+
+1. ***Press any key***
+2. ***Enter the pass: \*\*\*\****
+3. ***Correct Passcode*** Or
+* * ***Wrong Passcode!*** - returns to instruction 1
+4. ***Press # - UNLOCK***
+* * ***\* - CHANGE PASS***
+5. ***UNLOCKED!*** Or
+* * ***Enter new pass: 1234***
+6. ***Press # to LOCK*** Or
+* * ***New passcode set 1234*** - returns to instruction 1
+7. ***LOCKED!*** - returns to instruction 1
+
+### Interfacing of Relay Module
+
+The Relay Module connections are there in the above schematics and it's working is explained in "Component Study" section.. As I know that I use relay as a switch to *On/Off* high voltage components by applying low voltage so, I take an output from a digital pin of the microcontroller as our input to relay to turn *On/Off* the Solenoid Actuator (works at 12V - 1A).
+
+Since I have a normally closed terminal which disconnects when relay is actuated, I connect a red LED here to indicate the *Off/Locked* state of the Solenoid.
+
+And when the Solenoid ("Component Study" section.) is actuated I have coded the microcontroller to give an output on a digital pin which is connected to a green LED to indicate the *On/Unlocked* state of the Solenoid.
+
+### Code
+
+I are using ATmega328P microcontroller and I've burned Arduino Uno bootloader to it. Also there is a programming circuit saperately for programming the microcontroller which can be easily understood by just referring the connections in  the above schematics. So, I use Arduino coding itself to program the microcontroller. The code is pretty self explanatory with proper comments. The code is uploaded in the repository.
+
 ## Existing Models
 
 | ![Picture1-removebg-preview](https://github.com/fayizferosh/btech-mini-project/assets/63997454/0afc19cb-3377-4dc8-a8c7-12a1090af355) |
@@ -113,132 +239,6 @@ The open-source Arduino Software (IDE) makes it easy to write code and upload it
 #### Proteus 8 Professional
 
 The Proteus Design Suite is a proprietary software tool suite used primarily for electronic design automation. The software is used mainly by electronic design engineers and technicians to create schematics and electronic prints for manufacturing printed circuit boards. I used this for simulation of the circuit.
-
-## Circuit Diagram
-
-| ![Design Project_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/20da1aa2-4fe0-4ce3-bd3a-c59c09830dd2) |
-|:--:|
-| *Schematic of the Main Circuit* |
-
-| ![Design-Project-2_bb](https://github.com/fayizferosh/btech-mini-project/assets/63997454/eb5c6892-92fc-4d41-976a-3597ed92e064) |
-|:--:|
-| *Breadboard Wiring of the Main Circuit* |
-
-| ![Design Project 3_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/22772f8f-ee7f-4555-9967-27b79cc67d99) |
-|:--:|
-| *Schematic of the Programming Circuit* |
-
-| ![Design Project 1_bb](https://github.com/fayizferosh/btech-mini-project/assets/63997454/c13a1a9a-0ec8-438b-a1d1-c216b5c8400c) |
-|:--:|
-| *Breadboard Wiring of the Programming Circuit* |
-
-### Design
-
-I chose ATmega328P since I required a microcontroller but I didn't know Assembly Language Programming required to use a microcontroller. I burned Arduino Uno bootloader to the microcontroller so that I could code it using Arduino code which I knew. To use ATmega328P microcontroller as Arduino on breadboard I required just a 16 MHz crystal along with two 22pF ceramic capacitor. But to program I required an extra 100nF ceramic capacitor. All the connections are avalable in schematics above. The reference used for this is in "Reference" section.
-
-I used MT8870 DTMF Decoder Module since it provides information on the key pressed on DTMF keypad a 4-bit code for a key so in total 16 keys. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
-
-The 16x2 LCD is very easy to interface with Arduino board, which is the exact reason why I chose it as the display for our project. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
-
-The 12V Soleniod was the best component available to us to demonstrate the locking function that I required. Since this is a prototype, as I develop further I will be making significant changes. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
-
-For interfacing LEDs I know that both our supply and microcontroller output voltage are 5V and that the forward current of the LED to be 10mA from LED datasheet. So using the equation:
-
-```math
-Resistance = \frac{(BatteryVoltage - LEDMinForwardVoltage)}{LEDForwardCurrent}
-```
-
-Substituting,
-
-```math
-Resistance = \frac{(5V - 2V)}{10mA} = \frac{3V}{10mA} = 300\Omega
-```
-
-So, approximately I took 330 $\Omega$ resistor.
-
-Since using relay without proper circuits required might cause back emf voltage spike or some other undesired event, which is the reason why I chose the Relay Module. The circuit consists of a transistor an LED and few resistors. Here the transistor provides protection. A transistor in between will allow a 5V signal from the microconytroller to switch a 12V signal via the transistor to the relay - thus turning it *On*. The LED is connected in such a way that it will be lit when the relay is turned *On*. In the event of a back emf voltage spike or some other undesired event only your transistor will be blown, instead of the entire circuit. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
-
-The FT232RL USB to UART TTL Module is the best module available in the market which supports serial programming that is supported by the microcontroller. The interfacing, working and further information along with reference to datasheet is available in "Component Study" section.
-
-## General Working
-
-The working can be expained mainly by explaining in detail the interfacing of the main components in the project with the microcontroller. And rest of the part can be explained using the code that was given to the microcontroller, i.e., 
-
-1. Interfacing of DTMF Decoder Module
-2. Interfacing of 16x2 LCD Display
-3. Interfacing of Relay Module
-4. Code
-
-### Interfacing of DTMF Decoder Module
-
-The DTMF Decoder Module connections are there in the above schematics and it's working is explained in "Component Study" section. As I know the output of the module is a binary code which indicates any one value on the DTMF keypad as well a bit that indicates whenever DTMF tone is recieved so I just gave this as input to 5 digitals pins of the microcontroller and wrote the code to recognize what the user's input is.
-
-### Interfacing of 16x2 LCD Display
-
-The 16x2 LCD Display connections are there in the above schematics. Now here I just used the respective codes which are explained in "Component Study" section to display all the information on the LCD Display. The information I display are :-
-
-1. ***Press any key***
-2. ***Enter the pass: \*\*\*\****
-3. ***Correct Passcode*** Or
-* * ***Wrong Passcode!*** - returns to instruction 1
-4. ***Press # - UNLOCK***
-* * ***\* - CHANGE PASS***
-5. ***UNLOCKED!*** Or
-* * ***Enter new pass: 1234***
-6. ***Press # to LOCK*** Or
-* * ***New passcode set 1234*** - returns to instruction 1
-7. ***LOCKED!*** - returns to instruction 1
-
-### Interfacing of Relay Module
-
-The Relay Module connections are there in the above schematics and it's working is explained in "Component Study" section.. As I know that I use relay as a switch to *On/Off* high voltage components by applying low voltage so, I take an output from a digital pin of the microcontroller as our input to relay to turn *On/Off* the Solenoid Actuator (works at 12V - 1A).
-
-Since I have a normally closed terminal which disconnects when relay is actuated, I connect a red LED here to indicate the *Off/Locked* state of the Solenoid.
-
-And when the Solenoid ("Component Study" section.) is actuated I have coded the microcontroller to give an output on a digital pin which is connected to a green LED to indicate the *On/Unlocked* state of the Solenoid.
-
-### Code
-
-I are using ATmega328P microcontroller and I've burned Arduino Uno bootloader to it. Also there is a programming circuit saperately for programming the microcontroller which can be easily understood by just referring the connections in  the above schematics. So, I use Arduino coding itself to program the microcontroller. The code is pretty self explanatory with proper comments. The code is uploaded in the repository.
-
-## Testing & Simulation
-
-### Testing
-
-Once the whole circuit was wired I tested it multiple times to ensure the reliability of the prototype. The details of a few tests are given below.
-
-| Test # | Description | Outcome |
-| :-----------: | :-----------: | :-----------: |
-| 1 | Unlocking | $\color{green}{Passed}$ | 
-| 2 | Locking | $\color{green}{Passed}$ | 
-| 3 | Changing Passcode | $\color{red}{Failed}$ | 
-| 4 | Changing Passcode | $\color{green}{Passed}$ | 
-| 5 | Wrong Passcode | $\color{green}{Passed}$ | 
-| 6 | Wrong Passcode | $\color{green}{Passed}$ | 
-| 7 | Unlocking | $\color{red}{Failed}$ | 
-| 8 | Unlocking | $\color{green}{Passed}$ | 
-| 9 | Locking | $\color{green}{Passed}$ | 
-| 10 | Wrong Passcode | $\color{green}{Passed}$ |
-
-Since out of 10 tests, the prototype only failed about twice, therefore I can conclude that the design is about 80% - 90% reliable. Since I are developing the prototype, I are sure that I I'll be able to make tremendous progress.
-
-### Simulation
-
-I simulated the prototype by replacing the microcontroller with Arduino Uno board since, I're using Arduino on breadboard which is not available for simulation in Proteus 8 Professional. Also for simulation the DTMF Decoder Module was also not available in Proteus 8 Professional so I used an alternative setup from a site Foros de Electronica a spanish Electronics Forum which is available in the reference. The prototype simulation worked out fine, which helped us ensure that our code is correct and working.
-
-| ![Picture15](https://github.com/fayizferosh/btech-mini-project/assets/63997454/8c28be7f-e108-4363-9234-112cfc175762) |
-|:--:|
-| *Screenshot of Simulation in Proteus 8 Professional* |
-
-## Experimental Setup
-
-| ![IMG_20210127_135915](https://github.com/fayizferosh/btech-mini-project/assets/63997454/0bd43fbc-a42d-45f3-87f0-5089d70298bd) |
-|:--:|
-| *Image of wired working circuit* |
-
-## Conclusion
-
-The aim of this project was to build a DTMF based passcode electronic lock system with LCD Display. Through the development of the project the working of DTMF Decoder Module, 16x2 LCD Display, 5V Relay Module, ATmega328P microcontroller etc were acknowledged and then applied to the project. This project provides an efficient and economical security system.
 
 ## Component Study
 
@@ -442,6 +442,10 @@ The FT232RL is a USB to serial UART interface IC with the following advanced fea
 * 128 byte receive buffer and 256 byte transmit buffer utilising buffer smoothing technology to allow for high data throughput.
 
 The connections can be found in the above schematic. The rest of the details about this can be found in the datasheet in reference.
+
+## Conclusion
+
+The aim of this project was to build a DTMF based passcode electronic lock system with LCD Display. Through the development of the project the working of DTMF Decoder Module, 16x2 LCD Display, 5V Relay Module, ATmega328P microcontroller etc were acknowledged and then applied to the project. This project provides an efficient and economical security system.
 
 ## References
 
