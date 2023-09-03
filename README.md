@@ -116,19 +116,19 @@ The Proteus Design Suite is a proprietary software tool suite used primarily for
 
 ## Circuit Diagram
 
-| ![Design Project_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/3b947314-757f-47d0-8674-013202e5d646) |
+| ![Design Project_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/20da1aa2-4fe0-4ce3-bd3a-c59c09830dd2) |
 |:--:|
 | *Schematic of the Main Circuit* |
 
-| ![Design-Project-2_bb](https://github.com/fayizferosh/btech-mini-project/assets/63997454/79800dc0-f300-4656-b053-392b63c390a5) |
+| ![Design-Project-2_bb](https://github.com/fayizferosh/btech-mini-project/assets/63997454/eb5c6892-92fc-4d41-976a-3597ed92e064) |
 |:--:|
 | *Breadboard Wiring of the Main Circuit* |
 
-| ![Design Project 3_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/6950802d-b48d-44ba-a0e5-808f8147f849) |
+| ![Design Project 3_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/22772f8f-ee7f-4555-9967-27b79cc67d99) |
 |:--:|
 | *Schematic of the Programming Circuit* |
 
-| ![Design Project 1_bb](https://github.com/fayizferosh/btech-mini-project/assets/63997454/2bf7a51c-abd4-4570-b657-a31bb1335142) |
+| ![Design Project 1_bb](https://github.com/fayizferosh/btech-mini-project/assets/63997454/c13a1a9a-0ec8-438b-a1d1-c216b5c8400c) |
 |:--:|
 | *Breadboard Wiring of the Programming Circuit* |
 
@@ -226,13 +226,13 @@ Since out of 10 tests, the prototype only failed about twice, therefore I can co
 
 I simulated the prototype by replacing the microcontroller with Arduino Uno board since, I're using Arduino on breadboard which is not available for simulation in Proteus 8 Professional. Also for simulation the DTMF Decoder Module was also not available in Proteus 8 Professional so I used an alternative setup from a site Foros de Electronica a spanish Electronics Forum which is available in the reference. The prototype simulation worked out fine, which helped us ensure that our code is correct and working.
 
-| ![Picture15](https://github.com/fayizferosh/btech-mini-project/assets/63997454/d5c2416e-f0ef-4c71-a031-b730f9820622) |
+| ![Picture15](https://github.com/fayizferosh/btech-mini-project/assets/63997454/8c28be7f-e108-4363-9234-112cfc175762) |
 |:--:|
 | *Screenshot of Simulation in Proteus 8 Professional* |
 
 ## Experimental Setup
 
-| ![IMG_20210127_135915](https://github.com/fayizferosh/btech-mini-project/assets/63997454/179f5471-c935-4cae-bc81-7a713bf6b7e1) |
+| ![IMG_20210127_135915](https://github.com/fayizferosh/btech-mini-project/assets/63997454/0bd43fbc-a42d-45f3-87f0-5089d70298bd) |
 |:--:|
 | *Image of wired working circuit* |
 
@@ -301,7 +301,7 @@ The DTMF module has a 3.5 mm audio input Jack that can be easily connected with 
 
 ### 16x2 LCD Display
 
-| ![16x2-LCD-Pinout](https://github.com/fayizferosh/btech-mini-project/assets/63997454/17f45d12-e3da-4696-8ec7-9e4824246476) |
+| ![16x2-LCD-Pinout](https://github.com/fayizferosh/btech-mini-project/assets/63997454/17dd14a7-b8c8-45d7-8212-99d1848904ec) |
 |:--:|
 | *16x2 LCD Display* |
 
@@ -309,7 +309,7 @@ LCD modules are very commonly used in most embedded projects, the reason being i
 
 16×2 LCD is named so because; it has 16 Columns and 2 Rows. There are a lot of combinations available like, 8×1, 8×2, 10×2, 16×1, etc. but the most used one is the 16×2 LCD. So, it will have (16×2=32) 32 characters in total and each character will be made of 5×8 Pixel Dots. A Single character with all its Pixels is shown in the below picture.
 
-| ![16x2-LCD-Pixel](https://github.com/fayizferosh/btech-mini-project/assets/63997454/c1ff6d8c-ba61-411d-bc36-8eb3946668c0) |
+| ![16x2-LCD-Pixel](https://github.com/fayizferosh/btech-mini-project/assets/63997454/4688d04b-1f35-46fa-8ead-46c6755b4d3a) |
 |:--:|
 | *Pixels of a single character* |
 
@@ -340,7 +340,7 @@ All of the codes required to program the LCD display can be found in reference.
 
 ### ATmega328P Microcontroller
 
-| ![atmega328-removebg](https://github.com/fayizferosh/btech-mini-project/assets/63997454/e687ef43-68b5-4726-a4e0-6729ebc4ab90) |
+| ![atmega328-removebg](https://github.com/fayizferosh/btech-mini-project/assets/63997454/9954c882-5bca-4ed8-bec7-be802ffdbe8a) |
 |:--:|
 | *ATmega328P Microcontroller* |
 
@@ -352,7 +352,7 @@ I burned Arduino Uno bootloader onto this microcontroller and so I use Arduino I
 
 ### 5V Relay Module
 
-| ![1-Channel-5V-10A-Relay-Module-2](https://github.com/fayizferosh/btech-mini-project/assets/63997454/6021a2bd-0415-4932-8136-f44080c73aab) |
+| ![1-Channel-5V-10A-Relay-Module-2](https://github.com/fayizferosh/btech-mini-project/assets/63997454/211a8e6f-b9ed-451a-8fe0-ca00fd83768b) |
 |:--:|
 | *5V Relay Module* |
 
@@ -360,7 +360,7 @@ Relays are most commonly used switching device in electronics. Let us learn how 
 
 Before I proceed with the circuit to drive the relay I have to consider two important parameter of the relay. Once is the Trigger Voltage, this is the voltage required to turn on the relay that is to change the contact from Common->NC to Common->NO. Our relay here has 5V trigger voltage, but you can also find relays of values 3V, 6V and even 12V so select one based on the available voltage in your project. The other parameter is your Load Voltage & Current, this is the amount of voltage or current that the NC,NO or Common terminal of the relay could withstand, in our case for DC it is maximum of 30V and 10A. Make sure the load you are using falls into this range.
 
-| ![relay_sch-1024x602](https://github.com/fayizferosh/btech-mini-project/assets/63997454/819df045-9138-4a11-9ce7-2030845ab0e0) |
+| ![relay_sch-1024x602](https://github.com/fayizferosh/btech-mini-project/assets/63997454/9bb7b6c7-b624-4e44-b8ed-6287be8042b8) |
 |:--:|
 | *5V Relay Module Circuit Diagram* |
 
@@ -368,13 +368,13 @@ The circuit diagram shows a bare-minimum concept for a relay to operate. Since t
 
 ### 12V Solenoid Actuator
 
-| ![SOL12V_-_Main-500x500-removebg-preview](https://github.com/fayizferosh/btech-mini-project/assets/63997454/71382c3d-5691-4c39-9cc1-6c6b153ae4da) |
+| ![SOL12V_-_Main-500x500-removebg-preview](https://github.com/fayizferosh/btech-mini-project/assets/63997454/42e54dc7-f884-4b2b-9430-d1fadec1023d) |
 |:--:|
 | *12V Solenoid Actuator* |
 
 A solenoid actuator is an electrically controlled actuator. The actuator features a solenoid, which is an electric coil with a movable ferromagnetic core (plunger) in its center.
 
-| ![image](https://github.com/fayizferosh/btech-mini-project/assets/63997454/7a68361a-ee31-484c-bff9-ab11916f534d) |
+| ![CN0415_01_1024](https://github.com/fayizferosh/btech-mini-project/assets/63997454/4bad7c2c-d6b3-4dd9-9385-f05fd6e8a3c1) |
 |:--:|
 | *12V Solenoid Actuator Working Diagram* |
 
@@ -382,7 +382,7 @@ In the rest position, the plunger closes off. An electric current through the co
 
 ### FT232RL USB to UART TTL Module
 
-| ![usb-ttl-ft232rl-pinout](https://github.com/fayizferosh/btech-mini-project/assets/63997454/1add3ba0-896d-4af9-b303-9705453b0d0d) |
+| ![usb-ttl-ft232rl-pinout](https://github.com/fayizferosh/btech-mini-project/assets/63997454/2d86f59f-c2f2-4217-831e-089456b57639) |
 |:--:|
 | *FT232RL USB to UART TTL Module* |
 
