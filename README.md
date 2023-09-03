@@ -41,6 +41,10 @@ The objective is to create a passcode unlockable lock with a display which shows
 
 [![Working Video Design Project](https://img.youtube.com/vi/kVsmnr1feqs/maxresdefault.jpg)](https://www.youtube.com/watch?v=kVsmnr1feqs)
 
+## Reproduction
+
+If you want to recreate this project install Arduino IDE buy all the components mentioned in "Componenents Required" section and connect everything as per below circuit diagrams below and insert the code in the repo to the microcontroller using Arduino IDE and the programming circuit.
+
 ## Circuit Diagram
 
 | ![Design Project_schem](https://github.com/fayizferosh/btech-mini-project/assets/63997454/20da1aa2-4fe0-4ce3-bd3a-c59c09830dd2) |
